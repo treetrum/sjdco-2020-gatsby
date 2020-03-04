@@ -1,10 +1,14 @@
 ---
-title: Sweather
+title: Cumberland Council Website
 date: 2020-03-03T09:50:09.693Z
 description: Simple weather app for iOS
+subtitle: Custom Drupal Theme
+image: /images/cumberland.jpg
 ---
-# Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Custom Drupal theme using Twig templating and React components
 
-> Aliquam diam augue, hendrerit vitae orci quis, suscipit condimentum mi. Etiam eu massa lacus. Integer placerat nec lacus in malesuada. Duis ullamcorper eget orci fringilla accumsan. 
+This site was built during my time as a Senior UI Developer at Adrenalin Media. I worked closely with a backend Drupal developer to create this outcome. All templating was done using Twig with various components such as forms/filters built using React. The site was built with a component first approach allowing the client to create highly customisable pages with ease. AA accessibility standards were strived for to allow for a high level of accessibility.
 
-Praesent ullamcorper rhoncus felis ut fringilla. Mauris ut facilisis sapien, quis auctor elit. Sed mauris felis, pulvinar a justo at, tincidunt dapibus leo. Donec pellentesque auctor mauris, quis aliquet leo laoreet vel. Quisque ipsum augue, aliquam sit amet pulvinar in, tincidunt eu arcu. Suspendisse et pharetra dui. Nullam ullamcorper lectus eu metus sagittis placerat. Aenean gravida tristique risus at dictum. Maecenas blandit molestie elit, tincidunt pharetra lacus porta quis. Morbi est felis, ornare quis pellentesque ac, condimentum id ante. Aliquam tincidunt dolor quis felis interdum imperdiet. In laoreet lorem dignissim quam condimentum, et posuere lorem porta.
+Technologies used: JavaScript/ES6, React, Twig, Sass
+
+[View site](https://www.cumberland.nsw.gov.au/)
