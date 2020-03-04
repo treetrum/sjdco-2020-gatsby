@@ -15,12 +15,8 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Body", name: "body", widget: "markdown" }
-          - label: "CTA"
-            name: "cta"
-            widget: "relation"
-            collection: "pages"
-            searchFields: ["title"]
-            valueField: "title"
+          - { label: "CTA Text", name: "cta.text", widget: "string" }
+          - { label: "CTA Link", name: "cta.link", widget: "string" }
       - label: "About"
         name: "about"
         file: "content/pages/about.md"
