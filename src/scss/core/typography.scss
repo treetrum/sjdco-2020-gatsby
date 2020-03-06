@@ -1,0 +1,66 @@
+body {
+    font-family: $font_main;
+    color: $text;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+[class*="heading-"] {
+    font-family: $font_heading;
+    line-height: 1.2;
+    margin: 0;
+}
+
+p,
+li {
+    margin: 0;
+    line-height: 1.65;
+    font-size: 1em;
+}
+
+p {
+    margin: 24px 0;
+    &:first-child {
+        margin-top: 0;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: $purple;
+    transition: 250ms ease all;
+    &:hover {
+        color: lighten($purple, 10%);
+    }
+}
+
+.lead {
+    font-size: 20px;
+}
+
+.rte {
+    .section-title {
+        margin-bottom: 24px;
+    }
+
+    a:not([class*="button-"]) {
+        color: $text;
+        background-image: linear-gradient($text, $text);
+        background-repeat: no-repeat;
+        background-position: 0px 100%;
+        background-size: 100% 2px;
+        transition: 200ms ease all;
+
+        &:hover {
+            color: $green;
+            background-size: 100% 100%;
+        }
+    }
+}

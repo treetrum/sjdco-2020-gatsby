@@ -1,0 +1,52 @@
+.my-work {
+    @extend %padded-double;
+    background-color: white;
+
+    .container {
+        // max-width: $grid_max_width * 0.75;
+        max-width: 1600px;
+    }
+
+    &__intro {
+        text-align: center;
+
+        .section-title {
+            margin-bottom: 48px;
+            color: $background;
+        }
+    }
+
+    &__projects {
+        $gutter: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -$gutter;
+        margin-right: -$gutter;
+
+        &__single {
+            padding: 0 $gutter ($gutter * 2);
+            margin-bottom: 10px;
+            width: (100%)/1;
+        }
+    }
+
+    @include breakpoint(sm) {
+        &__intro .section-title {
+            margin-bottom: 96px;
+        }
+        &__projects {
+            &__single {
+                width: (100%)/2;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    @include breakpoint(lg) {
+        &__projects {
+            &__single {
+                width: (100%)/3;
+            }
+        }
+    }
+}

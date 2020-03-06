@@ -1,0 +1,63 @@
+@import "../../node_modules/sjd-scss/sjd-scss";
+
+@import "constants/constants";
+@import "core/normalize";
+@import "core/global";
+@import "core/grid";
+@import "core/mixins";
+@import "core/fonts";
+@import "core/typography";
+@import "core/iconfont";
+
+@import "components/organisms/page-loader";
+
+@import "components/atoms/nprogress";
+@import "components/atoms/button";
+@import "components/atoms/highlight";
+@import "components/atoms/section-title";
+@import "components/atoms/project-gallery-image";
+@import "components/atoms/featured-project-image";
+
+@import "components/organisms/navbar";
+@import "components/organisms/mobile-menu";
+@import "components/organisms/hero-home";
+@import "components/organisms/hero-page";
+@import "components/organisms/parallax-icons";
+@import "components/organisms/my-work";
+@import "components/organisms/page-content";
+@import "components/organisms/project-slideover";
+@import "components/organisms/loader";
+
+// Included last so that these styles are guaranteed
+@import "core/animations";
+
+.sfield {
+    margin: 24px 0;
+
+    &__label {
+        display: block;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    &__input {
+        margin: 0;
+        width: 100%;
+        display: block;
+        padding: 10px 0;
+        margin: 10px 0;
+        border: 0;
+        border-bottom: 1px solid hsl(0, 0, 50%);
+        transition: 200ms ease all;
+
+        &:focus {
+            outline: none;
+            border-bottom-color: $green;
+        }
+    }
+
+    &__error {
+        color: red;
+        font-size: 12px;
+    }
+}
