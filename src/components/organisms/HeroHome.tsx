@@ -8,7 +8,13 @@ import useWindowHeight from "../../hooks/useWindowHeight";
 const HeroHome = () => {
     const minHeight = useWindowHeight();
     return (
-        <header className="hero-home" style={{ minHeight: `${minHeight}px` }}>
+        <header
+            className="hero-home"
+            style={{
+                minHeight:
+                    typeof minHeight === "string" ? minHeight : `${minHeight}px`
+            }}
+        >
             <ParallaxIcons />
             <ParallaxLetters />
             <div className="container">

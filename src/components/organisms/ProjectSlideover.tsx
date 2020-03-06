@@ -24,7 +24,12 @@ const ProjectSlideover: React.FC<Props> = ({ projectSlug }) => {
         history.push("/");
     };
     React.useEffect(() => {
-        window.addEventListener("keydown", handleKeyDown);
+        if (typeof window !== `undefined`) {
+            window.addEventListener("keydown", handleKeyDown);
+            return () => {
+                window.removeEventListener("keydown", handleKeyDown);
+            };
+        }
     }, []);
     if (!project) {
         return null;
@@ -55,7 +60,7 @@ const ProjectSlideover: React.FC<Props> = ({ projectSlug }) => {
                     <div
                         className="rte"
                         dangerouslySetInnerHTML={{
-                            __html: project.content.rendered,
+                            __html: project.content.rendered
                         }}
                     />
                 </div>
