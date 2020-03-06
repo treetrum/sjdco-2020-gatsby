@@ -80,6 +80,7 @@ const GravityForm: React.FC<PropsType> = props => {
                     style={{ opacity: isSubmitting ? 0.5 : null }}
                     action="/form-submit"
                     data-netlify="true"
+                    name="contact"
                 >
                     {fields.map(field => (
                         <div className="sfield" key={field.id}>
