@@ -1,15 +1,15 @@
 import * as React from "react";
 import { rgba } from "polished";
 import styled from "styled-components";
-import { Link } from "gatsby";
 
-import Container from "./atoms/Container";
-import * as Colors from "../constants/Colors";
-import SocialLinks from "./molecules/SocialLinks";
-import Config from "../constants/Config";
-import SmallPrint from "./atoms/SmallPrint";
+import PreloadLink from "../atoms/PreloadLink";
+import Container from "../atoms/Container";
+import * as Colors from "../../constants/Colors";
+import SocialLinks from "../molecules/SocialLinks";
+import Config from "../../constants/Config";
+import SmallPrint from "../atoms/SmallPrint";
 
-const logo = require("../images/logos/sd-logo.svg");
+const SDLogo = require("../../../images/logos/sd-logo.svg");
 
 const FooterPrimary = styled.footer`
     padding: 48px 0 16px;
@@ -42,9 +42,9 @@ const Footer = () => {
             <FooterPrimary>
                 <Container>
                     <Logo>
-                        <Link to="/">
-                            <img src={logo} alt="Sam Davis Logo" />
-                        </Link>
+                        <PreloadLink to="/">
+                            <img src={SDLogo} alt="Sam Davis Logo" />
+                        </PreloadLink>
                     </Logo>
                     <SocialLinks links={Config.socialLinks} />
                 </Container>

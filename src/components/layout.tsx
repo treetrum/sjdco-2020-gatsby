@@ -9,6 +9,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import NavBar from "./NavBar";
+import Footer from "./Footer";
 
 import "../scss/main.scss";
 
@@ -17,6 +18,7 @@ const Layout = ({ children }) => {
         <>
             <NavBar />
             {children}
+            <Footer />
         </>
     );
 };
