@@ -1,8 +1,8 @@
 import * as React from "react";
+import { Link } from "gatsby";
 
 import ParallaxIcons from "../molecules/ParallaxIcons";
 import ParallaxLetters from "../molecules/ParallaxLetters";
-import PreloadLink from "../atoms/PreloadLink";
 import useWindowHeight from "../../hooks/useWindowHeight";
 
 const HeroHome = () => {
@@ -23,9 +23,9 @@ const HeroHome = () => {
                     <span className="highlight-blue">6 years experience</span>
                 </p>
                 <p className="buttons">
-                    <PreloadLink className="button-green" to="/contact">
+                    <Link className="button-green" to="/contact">
                         About Me
-                    </PreloadLink>
+                    </Link>
                 </p>
             </div>
             <div className="more-link">

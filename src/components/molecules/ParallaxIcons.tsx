@@ -2,16 +2,16 @@ import * as React from "react";
 
 import useParallax from "../../hooks/useParallax";
 
-const aperture = require("../../../images/icons/aperture.svg");
-const checkbox = require("../../../images/icons/checkbox.svg");
-const command = require("../../../images/icons/command.svg");
-const cpu = require("../../../images/icons/cpu.svg");
-const cube = require("../../../images/icons/cube.svg");
-const headphones = require("../../../images/icons/headphones.svg");
-const lightningBolt = require("../../../images/icons/lightning-bolt.svg");
-const mapPin = require("../../../images/icons/map-pin.svg");
-const musicalNote = require("../../../images/icons/musical-note.svg");
-const pulse = require("../../../images/icons/pulse.svg");
+const aperture = require("../../images/icons/aperture.svg");
+const checkbox = require("../../images/icons/checkbox.svg");
+const command = require("../../images/icons/command.svg");
+const cpu = require("../../images/icons/cpu.svg");
+const cube = require("../../images/icons/cube.svg");
+const headphones = require("../../images/icons/headphones.svg");
+const lightningBolt = require("../../images/icons/lightning-bolt.svg");
+const mapPin = require("../../images/icons/map-pin.svg");
+const musicalNote = require("../../images/icons/musical-note.svg");
+const pulse = require("../../images/icons/pulse.svg");
 
 const { useRef } = React;
 

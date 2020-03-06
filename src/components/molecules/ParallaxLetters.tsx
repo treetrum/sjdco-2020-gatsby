@@ -2,8 +2,8 @@ import * as React from "react";
 
 import useParallax from "../../hooks/useParallax";
 
-const SSVG = require("../../../images/logos/S.svg");
-const DSVG = require("../../../images/logos/D.svg");
+const SSVG = require("../../images/logos/S.svg");
+const DSVG = require("../../images/logos/D.svg");
 
 const ParallaxLetters = () => {
     const letteresRef = React.useRef<HTMLDivElement>(null);
