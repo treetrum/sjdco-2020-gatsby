@@ -12,7 +12,7 @@ const links: LinkType[] = [
     },
     {
         title: "About Me / Contact",
-        url: "/contact",
+        url: "/about",
         type: "internal"
     },
     {
