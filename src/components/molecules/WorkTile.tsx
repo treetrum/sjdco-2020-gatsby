@@ -1,13 +1,11 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "gatsby";
 import styled from "styled-components";
 import { rgba } from "polished";
+import isTouch from "../../utils/isTouch.js";
 
 import * as Colors from "../../constants/Colors";
 import * as Queries from "../../constants/MediaQueries";
-import { Project } from "../../redux-store-types/projects";
-import getFeaturedImagePath from "../../utils/getFeaturedImagePath";
-import { useTypedSelector } from "../../Store";
 import Thumbnail from "../atoms/Thumbnail";
 
 const Container = styled(Link)`
@@ -45,8 +43,8 @@ const Content = styled.div`
     }
 
     ${() =>
-        window.Modernizr.touch && {
-            transform: "none",
+        isTouch && {
+            transform: "none"
         }}
 
     ${Queries.md} {
@@ -68,9 +66,9 @@ const Title = styled.h4`
     }
 
     ${() =>
-        window.Modernizr.touch && {
+        isTouch && {
             transform: "none",
-            opacity: 1,
+            opacity: 1
         }}
 
     ${Queries.md} {
@@ -93,9 +91,9 @@ const Subtitle = styled.p`
     }
 
     ${() =>
-        window.Modernizr.touch && {
+        isTouch && {
             transform: "none",
-            opacity: 1,
+            opacity: 1
         }}
 
     ${Queries.md} {
@@ -104,18 +102,19 @@ const Subtitle = styled.p`
 `;
 
 interface WorkTileProps {
-    project: Project;
+    link: string;
+    image: string;
+    title: string;
+    subtitle: string;
 }
 
-const WorkTile: React.FC<WorkTileProps> = ({ project }) => {
-    const baseUrl = useTypedSelector((state: any) => state.global.data.home);
-    const featuredImage = getFeaturedImagePath(project);
+const WorkTile: React.FC<WorkTileProps> = props => {
     return (
-        <Container to={project.link} key={project.id}>
-            <Thumbnail image={baseUrl + featuredImage} />
+        <Container to={props.link} key={props.link}>
+            <Thumbnail image={props.image} />
             <Content>
-                <Title>{project.title.rendered}</Title>
-                <Subtitle>{project.acf.subtitle}</Subtitle>
+                <Title>{props.title}</Title>
+                <Subtitle>{props.subtitle}</Subtitle>
             </Content>
         </Container>
     );

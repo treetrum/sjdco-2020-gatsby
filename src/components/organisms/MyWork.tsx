@@ -1,22 +1,45 @@
 import * as React from "react";
-import { useDispatch } from "react-redux";
-import { Route } from "react-router-dom";
-import { CSSTransition } from "react-transition-group";
-import actions from "../../actions/index";
-
-import ProjectSlideover from "./ProjectSlideover";
+import { useStaticQuery, graphql } from "gatsby";
 import WorkTile from "../molecules/WorkTile";
-import { useTypedSelector } from "../../Store";
+
+interface Project {
+    frontmatter: {
+        title: string;
+        description: string;
+        subtitle: string;
+        image: string;
+    };
+    html: string;
+}
 
 const MyWork = () => {
-    const projects = useTypedSelector(state => state.projects.projects);
-    const dispatch = useDispatch();
-
-    React.useEffect(() => {
-        if (projects.length === 0) {
-            dispatch(actions.fetchProjects());
+    const data = useStaticQuery(graphql`
+        {
+            allFile(filter: { sourceInstanceName: { eq: "projects" } }) {
+                edges {
+                    node {
+                        id
+                        name
+                        childMarkdownRemark {
+                            frontmatter {
+                                title
+                                description
+                                subtitle
+                                image
+                            }
+                            html
+                        }
+                    }
+                }
+            }
         }
-    }, [projects]);
+    `);
+
+    const projects: Array<Project> = data.allFile.edges.map(
+        d => d.node.childMarkdownRemark
+    );
+
+    console.log(projects);
 
     return (
         <>
@@ -26,18 +49,26 @@ const MyWork = () => {
                         <h3 className="section-title">My Work</h3>
                     </div>
                     <div className="my-work__projects">
-                        {projects.map(project => (
-                            <div
-                                key={project.id}
-                                className="my-work__projects__single"
-                            >
-                                <WorkTile project={project} />
-                            </div>
-                        ))}
+                        {projects.map(project => {
+                            console.log(project);
+                            return (
+                                <div
+                                    key={project.id}
+                                    className="my-work__projects__single"
+                                >
+                                    <WorkTile
+                                        title={project.frontmatter.title}
+                                        link={project.frontmatter.title}
+                                        image={project.frontmatter.image}
+                                        subtitle={project.frontmatter.subtitle}
+                                    />
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             </section>
-            {projects.map(project => (
+            {/* {projects.map(project => (
                 <Route
                     key={project.slug}
                     exact
@@ -54,7 +85,7 @@ const MyWork = () => {
                         </CSSTransition>
                     )}
                 </Route>
-            ))}
+            ))} */}
         </>
     );
 };

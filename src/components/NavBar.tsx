@@ -36,7 +36,7 @@ const NavBar = () => {
                     </div>
                     <nav className="navbar-item menu">
                         {links.map(link => (
-                            <NavLink link={link}></NavLink>
+                            <NavLink key={link.url} link={link}></NavLink>
                         ))}
                     </nav>
                     <div className="navbar-item hamburger">

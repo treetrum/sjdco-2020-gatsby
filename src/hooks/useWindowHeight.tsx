@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import isTouch from "../utils/isTouch";
 
 /*
  * Returns the up to date window.innerHeight. If on a touch device - window.innerHeight
@@ -10,11 +11,11 @@ export default () => {
         const handleWindowResize = () => {
             setHeight(window.innerHeight);
         };
-        if (!window.Modernizr.touch) {
+        if (!isTouch) {
             window.addEventListener("resize", handleWindowResize);
         }
         return () => {
-            if (!window.Modernizr.touch) {
+            if (!isTouch) {
                 window.removeEventListener("resize", handleWindowResize);
             }
         };
