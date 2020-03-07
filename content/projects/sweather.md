@@ -1,6 +1,16 @@
 ---
-title: Sweather
-subtitle: Some subtitle
+title: Sweather iPhone App
+subtitle: A beautifully simple weather app for iOS
+tags:
+  - Swift
+  - Xcode
+  - REST APIs
 image: ../../static/images/sweather.jpg
 ---
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam diam augue, hendrerit vitae orci quis, suscipit condimentum mi. Etiam eu massa lacus. Integer placerat nec lacus in malesuada. Duis ullamcorper eget orci fringilla accumsan. Praesent ullamcorper rhoncus felis ut fringilla. Mauris ut facilisis sapien, quis auctor elit. Sed mauris felis, pulvinar a justo at, tincidunt dapibus leo. Donec pellentesque auctor mauris, quis aliquet leo laoreet vel. Quisque ipsum augue, aliquam sit amet pulvinar in, tincidunt eu arcu. Suspendisse et pharetra dui. Nullam ullamcorper lectus eu metus sagittis placerat. Aenean gravida tristique risus at dictum. Maecenas blandit molestie elit, tincidunt pharetra lacus porta quis. Morbi est felis, ornare quis pellentesque ac, condimentum id ante. Aliquam tincidunt dolor quis felis interdum imperdiet. In laoreet lorem dignissim quam condimentum, et posuere lorem porta.
+##### Sweather was a personal project that I underwent in 2017 – and have been maintaining since. My goal was to design and build a weather app that was both functional and beautiful.
+
+When designing the interface I came up with over 30 custom icons to be associated with each state of the weather. These icons, along with the current temperature are the most prominent visual items in the user interface allowing for quick and painless user interactions. Additionally, the coloured backgrounds in the app reflect the current time of day and are constantly changing to give a fresh interaction each time you open the app.
+
+The app is built using native Swift code and utilises the [Willy Weather API](https://www.willyweather.com.au/info/api.html) for access to weather data across Australia.
+
+[View on the App Store](https://itunes.apple.com/au/app/sweather/id1238159259?mt=8)

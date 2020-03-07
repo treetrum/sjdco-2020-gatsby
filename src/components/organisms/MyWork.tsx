@@ -10,12 +10,12 @@ interface Project {
         description: string;
         subtitle: string;
         image: any;
+        tags: string[];
     };
     html: string;
 }
 
 const MyWork: React.FC<{ projectNames: string[] }> = props => {
-    console.log(props);
     const data = useStaticQuery(graphql`
         {
             allFile(filter: { sourceInstanceName: { eq: "projects" } }) {
@@ -28,6 +28,7 @@ const MyWork: React.FC<{ projectNames: string[] }> = props => {
                                 title
                                 description
                                 subtitle
+                                tags
                                 image {
                                     childImageSharp {
                                         fluid(maxWidth: 1024, quality: 100) {
@@ -50,13 +51,17 @@ const MyWork: React.FC<{ projectNames: string[] }> = props => {
     );
 
     // Filter and sort them from the names passed in to props
-    let projects: Project[] = props.projectNames.map(name => {
-        return allProjects.find(p => p.frontmatter.title === name);
-    });
+    let projects: Project[] = props.projectNames
+        .map(name => {
+            return allProjects.find(p => p.frontmatter.title === name);
+        })
+        .filter(a => !!a);
 
     const [activeProject, setActiveProject] = React.useState<null | Project>(
         null
     );
+
+    console.log(projects);
 
     return (
         <>
@@ -103,6 +108,7 @@ const MyWork: React.FC<{ projectNames: string[] }> = props => {
                     <ProjectSlideover
                         title={project.frontmatter.title}
                         image={project.frontmatter.image.childImageSharp.fluid}
+                        tags={project.frontmatter.tags}
                         content={project.html}
                         onClose={() => {
                             setActiveProject(null);

@@ -78,6 +78,40 @@
         }
     }
 
+    &__tags {
+        margin-top: 24px;
+        // border-top: 1px solid hsl(0, 0, 90%);
+        // padding-top: 24px;
+
+        $gap: 5px;
+
+        &__title {
+            display: none;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        &__list {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: (-$gap);
+            margin-right: (-$gap);
+        }
+
+        &__tag {
+            background-color: hsl(0, 0, 95%);
+            color: $background;
+            padding: 7px 10px;
+            margin: $gap;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid hsl(0, 0, 90%);
+            border-radius: 3px;
+            font-weight: 600;
+        }
+    }
+
     @include breakpoint(md) {
         &__content {
             padding: 50px;
@@ -97,6 +131,11 @@
             &:hover {
                 transform: translateX(-5px) translateZ(0);
             }
+        }
+
+        &__title {
+            margin-bottom: 20px;
+            font-size: 28px;
         }
     }
 }

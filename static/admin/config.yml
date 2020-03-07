@@ -77,5 +77,6 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Subtitle", name: "subtitle", widget: "string" }
+      - { label: "Tags", name: "tags", widget: "list" }
       - { label: "Image", name: "image", widget: "image" }
       - { label: "Body", name: "body", widget: "markdown" }

@@ -9,6 +9,7 @@ interface Props {
     image: any;
     content: string;
     onClose: () => void;
+    tags: string[];
 }
 
 const ProjectSlideover: React.FC<Props> = props => {
@@ -50,6 +51,21 @@ const ProjectSlideover: React.FC<Props> = props => {
                             __html: props.content
                         }}
                     />
+                    <div className="project-slideover__tags">
+                        <div className="project-slideover__tags__title">
+                            Tech used:
+                        </div>
+                        <div className="project-slideover__tags__list">
+                            {props.tags.map(tag => (
+                                <span
+                                    className="project-slideover__tags__tag"
+                                    key={tag}
+                                >
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

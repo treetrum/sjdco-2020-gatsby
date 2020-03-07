@@ -1,7 +1,13 @@
 ---
-title: Capture App
+title: Sanofi Capture App
 description: Simple weather app for iOS
-subtitle: Some Subtitle
+subtitle: React Native iPhone/iPad App
+tags:
+  - React Native
+  - FlowJS
+  - Redux
 image: ../../static/images/capture-app.jpg
 ---
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam diam augue, hendrerit vitae orci quis, suscipit condimentum mi. Etiam eu massa lacus. Integer placerat nec lacus in malesuada. Duis ullamcorper eget orci fringilla accumsan. Praesent ullamcorper rhoncus felis ut fringilla. Mauris ut facilisis sapien, quis auctor elit. Sed mauris felis, pulvinar a justo at, tincidunt dapibus leo. Donec pellentesque auctor mauris, quis aliquet leo laoreet vel. Quisque ipsum augue, aliquam sit amet pulvinar in, tincidunt eu arcu. Suspendisse et pharetra dui. Nullam ullamcorper lectus eu metus sagittis placerat. Aenean gravida tristique risus at dictum. Maecenas blandit molestie elit, tincidunt pharetra lacus porta quis. Morbi est felis, ornare quis pellentesque ac, condimentum id ante. Aliquam tincidunt dolor quis felis interdum imperdiet. In laoreet lorem dignissim quam condimentum, et posuere lorem porta. 
+##### React Native iPhone/iPad app for Health Care Professionals
+
+Built during my time as UI Developer at Adrenalin Media, Sanofi Capture is an app to allow Health Care Professionals to manage the subscription preferences for clients quickly and easily. The app was built using React Native and utilises Redux for state management. It includes advanced functionality including offline usage with a local drafts system, creation of customers and tight integration with a backend API.
