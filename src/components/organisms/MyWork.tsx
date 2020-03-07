@@ -60,10 +60,13 @@ const MyWork: React.FC<{ projectNames: string[] }> = props => {
         .filter(a => !!a);
 
     const projectFromURL =
-        allProjects.find(
-            p =>
-                p.frontmatter.slug === window.location.pathname.split("/").pop()
-        ) || null;
+        typeof window !== "undefined"
+            ? allProjects.find(
+                  p =>
+                      p.frontmatter.slug ===
+                      window.location.pathname.split("/").pop()
+              ) || null
+            : null;
 
     const [activeProject, _setActiveProject] = React.useState<null | Project>(
         projectFromURL
