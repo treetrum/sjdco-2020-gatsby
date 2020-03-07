@@ -1,66 +1,54 @@
 import * as React from "react";
-import { Link, useHistory } from "react-router-dom";
-
 import Helmet from "react-helmet";
-import getFeaturedImagePath from "../../utils/getFeaturedImagePath";
-import { useTypedSelector } from "../../Store";
+
+import LockBodyScroll from "../atoms/LockBodyScroll";
 
 interface Props {
-    projectSlug: string;
+    title: string;
+    image: string;
+    content: string;
+    onClose: () => void;
 }
 
-const ProjectSlideover: React.FC<Props> = ({ projectSlug }) => {
-    const history = useHistory();
-    const project = useTypedSelector(state =>
-        state.projects.projects.find(p => p.slug === projectSlug)
-    );
-    const baseUrl = useTypedSelector(state => state.global.data.home);
+const ProjectSlideover: React.FC<Props> = props => {
     const handleKeyDown = (event: KeyboardEvent) => {
         if (event.key === "Escape") {
-            history.push("/");
+            props.onClose();
         }
     };
-    const handleOverlayClick = () => {
-        history.push("/");
-    };
+
     React.useEffect(() => {
-        if (typeof window !== `undefined`) {
-            window.addEventListener("keydown", handleKeyDown);
-            return () => {
-                window.removeEventListener("keydown", handleKeyDown);
-            };
-        }
+        window.addEventListener("keydown", handleKeyDown);
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
     }, []);
-    if (!project) {
-        return null;
-    }
-    const featuredImage = baseUrl + getFeaturedImagePath(project);
+
     return (
         <div className="project-slideover">
+            <LockBodyScroll />
             <Helmet>
-                <title>{project.title.rendered}</title>
+                <title>{props.title}</title>
             </Helmet>
             <button
                 type="button"
                 className="project-slideover__overlay"
-                onClick={handleOverlayClick}
+                onClick={props.onClose}
             />
-            <Link to="/" className="project-slideover__back">
+            <button onClick={props.onClose} className="project-slideover__back">
                 <i className="icon icon-arrow-left" />
-            </Link>
+            </button>
             <div className="project-slideover__main">
                 <div
                     className="project-slideover__thumb"
-                    style={{ backgroundImage: `url(${featuredImage})` }}
+                    style={{ backgroundImage: `url(${props.image})` }}
                 />
                 <div className="project-slideover__content">
-                    <h3 className="project-slideover__title">
-                        {project.title.rendered}
-                    </h3>
+                    <h3 className="project-slideover__title">{props.title}</h3>
                     <div
                         className="rte"
                         dangerouslySetInnerHTML={{
-                            __html: project.content.rendered
+                            __html: props.content
                         }}
                     />
                 </div>

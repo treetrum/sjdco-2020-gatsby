@@ -1,6 +1,8 @@
 import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import WorkTile from "../molecules/WorkTile";
+import { CSSTransition } from "react-transition-group";
+import ProjectSlideover from "../organisms/ProjectSlideover";
 
 interface Project {
     frontmatter: {
@@ -39,6 +41,10 @@ const MyWork = () => {
         d => d.node.childMarkdownRemark
     );
 
+    const [activeProject, setActiveProject] = React.useState<null | Project>(
+        null
+    );
+
     return (
         <>
             <section className="my-work" id="my-work">
@@ -55,9 +61,11 @@ const MyWork = () => {
                                 >
                                     <WorkTile
                                         title={project.frontmatter.title}
-                                        link={"/project/some-project"}
                                         image={project.frontmatter.image}
                                         subtitle={project.frontmatter.subtitle}
+                                        onClick={() => {
+                                            setActiveProject(project);
+                                        }}
                                     />
                                 </div>
                             );
@@ -65,24 +73,27 @@ const MyWork = () => {
                     </div>
                 </div>
             </section>
-            {/* {projects.map(project => (
-                <Route
-                    key={project.slug}
-                    exact
-                    path={`/project/${project.slug}`}
+            {projects.map(project => (
+                <CSSTransition
+                    key={project.frontmatter.title}
+                    in={
+                        project.frontmatter.title ===
+                        activeProject?.frontmatter?.title
+                    }
+                    timeout={500}
+                    classNames="slideover"
+                    unmountOnExit
                 >
-                    {({ match }) => (
-                        <CSSTransition
-                            in={match !== null}
-                            timeout={500}
-                            classNames="slideover"
-                            unmountOnExit
-                        >
-                            <ProjectSlideover projectSlug={project.slug} />
-                        </CSSTransition>
-                    )}
-                </Route>
-            ))} */}
+                    <ProjectSlideover
+                        title={project.frontmatter.title}
+                        image={project.frontmatter.image}
+                        content={project.html}
+                        onClose={() => {
+                            setActiveProject(null);
+                        }}
+                    />
+                </CSSTransition>
+            ))}
         </>
     );
 };

@@ -61,6 +61,8 @@
         font-size: 18px;
         border-radius: 50px;
         border: 2px solid white;
+        transition: 200ms ease all;
+        cursor: pointer;
 
         &:hover {
             color: $green;

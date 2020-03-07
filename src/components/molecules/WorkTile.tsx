@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Link } from "gatsby";
 import styled from "styled-components";
 import { rgba } from "polished";
 import isTouch from "../../utils/isTouch.js";
@@ -8,7 +7,7 @@ import * as Colors from "../../constants/Colors";
 import * as Queries from "../../constants/MediaQueries";
 import Thumbnail from "../atoms/Thumbnail";
 
-const Container = styled(Link)`
+const Container = styled.a`
     overflow: hidden;
     box-shadow: 0 5px 10px ${rgba("black", 0.2)};
     color: hsl(0, 0, 25%);
@@ -17,6 +16,7 @@ const Container = styled(Link)`
     height: 100%;
     transition: 500ms ease all;
     position: relative;
+    cursor: pointer;
 
     &:hover {
         box-shadow: 0 10px 20px ${rgba("black", 0.2)};
@@ -102,7 +102,7 @@ const Subtitle = styled.p`
 `;
 
 interface WorkTileProps {
-    link: string;
+    onClick: () => void;
     image: string;
     title: string;
     subtitle: string;
@@ -110,7 +110,12 @@ interface WorkTileProps {
 
 const WorkTile: React.FC<WorkTileProps> = props => {
     return (
-        <Container to={props.link} key={props.link}>
+        <Container
+            onClick={event => {
+                event.preventDefault();
+                props.onClick();
+            }}
+        >
             <Thumbnail image={props.image} />
             <Content>
                 <Title>{props.title}</Title>
