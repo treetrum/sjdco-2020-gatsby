@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
+import { Formik, Field, ErrorMessage, FormikHelpers } from "formik";
 
 function encode(data: { [key: string]: string }) {
     return Object.keys(data)
@@ -84,6 +84,7 @@ const GravityForm: React.FC<PropsType> = props => {
                     body: encode(data)
                 });
                 setSubmitting(false);
+                setSubmitted(true);
             } catch (error) {
                 console.error(error);
                 setSubmitting(false);

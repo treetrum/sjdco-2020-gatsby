@@ -39,8 +39,6 @@ const MyWork = () => {
         d => d.node.childMarkdownRemark
     );
 
-    console.log(projects);
-
     return (
         <>
             <section className="my-work" id="my-work">
@@ -49,16 +47,15 @@ const MyWork = () => {
                         <h3 className="section-title">My Work</h3>
                     </div>
                     <div className="my-work__projects">
-                        {projects.map(project => {
-                            console.log(project);
+                        {projects.map((project, index) => {
                             return (
                                 <div
-                                    key={project.id}
+                                    key={index}
                                     className="my-work__projects__single"
                                 >
                                     <WorkTile
                                         title={project.frontmatter.title}
-                                        link={project.frontmatter.title}
+                                        link={"/project/some-project"}
                                         image={project.frontmatter.image}
                                         subtitle={project.frontmatter.subtitle}
                                     />
