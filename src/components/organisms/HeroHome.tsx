@@ -30,7 +30,7 @@ const HeroHome = () => {
         <header
             className="hero-home"
             style={{
-                minHeight: minHeight ? `${minHeight}px` : `100vw`
+                minHeight: minHeight ? `${minHeight}px` : `100vh`
             }}
         >
             <ParallaxIcons />
