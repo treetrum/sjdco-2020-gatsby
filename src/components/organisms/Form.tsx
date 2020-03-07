@@ -1,5 +1,13 @@
 import * as React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
+
+function encode(data: { [key: string]: string }) {
+    return Object.keys(data)
+        .map(
+            key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+        )
+        .join("&");
+}
 
 interface FormField {
     label: string;
@@ -57,7 +65,10 @@ const GravityForm: React.FC<PropsType> = props => {
         return errors;
     };
 
-    const handleSubmit = async (values, { setSubmitting }) => {
+    const handleSubmit = async (
+        values: any,
+        { setSubmitting }: FormikHelpers<any>
+    ) => {
         const form = formRef.current;
         if (form) {
             const formData = new FormData(form);
@@ -65,9 +76,13 @@ const GravityForm: React.FC<PropsType> = props => {
                 console.log({ [key]: value });
             }
             try {
-                await fetch(form.action, {
+                const data = {
+                    "form-name": form.getAttribute("name"),
+                    ...values
+                };
+                await fetch("/", {
                     method: "POST",
-                    body: formData
+                    body: encode(data)
                 });
                 setSubmitting(false);
             } catch (error) {
