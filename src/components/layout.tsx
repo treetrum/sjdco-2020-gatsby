@@ -20,12 +20,12 @@ const Layout = ({ children }) => {
         }
     }, []);
     return (
-        <>
+        <div className="page">
             <SEO title=""></SEO>
             <NavBar />
             {children}
             <Footer />
-        </>
+        </div>
     );
 };
 

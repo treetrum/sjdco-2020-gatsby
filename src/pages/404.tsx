@@ -1,11 +1,26 @@
 import React from "react";
+import styled from "styled-components";
 
 import Layout from "../components/layout";
+import HeroPage from "../components/organisms/HeroPage";
+
+import ohwell from "../images/ohwell.gif";
+
+const OhWell = styled.img`
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 500px;
+`;
 
 const NotFoundPage = () => (
     <Layout>
-        <h1>NOT FOUND</h1>
-        <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+        <HeroPage align="center" title="404 - Not Found"></HeroPage>
+        <div className="page-content">
+            <div className="container">
+                <OhWell src={ohwell} alt="" />
+            </div>
+        </div>
     </Layout>
 );
 
