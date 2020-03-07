@@ -9,10 +9,13 @@ Port to Gatsby and Netlify/NetlifyCMS of my 2020 online portfolio.
 To simply get the dev site up and running, do the following:
 
 1. Install node modules:
+
     ```
     npm install
     ```
+
 2. Run the dev server:
+
     ```
     npm run start
     ```
