@@ -103,7 +103,7 @@ const Subtitle = styled.p`
 
 interface WorkTileProps {
     onClick: () => void;
-    image: string;
+    image: any;
     title: string;
     subtitle: string;
 }

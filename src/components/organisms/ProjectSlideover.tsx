@@ -1,11 +1,12 @@
 import * as React from "react";
 import Helmet from "react-helmet";
+import Image from "gatsby-image";
 
 import LockBodyScroll from "../atoms/LockBodyScroll";
 
 interface Props {
     title: string;
-    image: string;
+    image: any;
     content: string;
     onClose: () => void;
 }
@@ -38,10 +39,9 @@ const ProjectSlideover: React.FC<Props> = props => {
                 <i className="icon icon-arrow-left" />
             </button>
             <div className="project-slideover__main">
-                <div
-                    className="project-slideover__thumb"
-                    style={{ backgroundImage: `url(${props.image})` }}
-                />
+                <div className="project-slideover__thumb">
+                    <Image fluid={props.image}></Image>
+                </div>
                 <div className="project-slideover__content">
                     <h3 className="project-slideover__title">{props.title}</h3>
                     <div

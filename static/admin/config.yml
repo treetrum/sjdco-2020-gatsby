@@ -6,7 +6,7 @@ backend:
 # local_backend: true
 
 media_folder: static/images
-public_folder: /images
+public_folder: ../../static/images
 
 collections:
   - name: "pages"

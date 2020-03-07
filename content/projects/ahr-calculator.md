@@ -3,7 +3,7 @@ title: AHR Calculator
 date: 2020-03-03T09:50:09.693Z
 description: Simple weather app for iOS
 subtitle: Custom Drupal Theme
-image: /images/ahr-calculator.jpg
+image: ../../static/images/ahr-calculator.jpg
 ---
 
 Custom Drupal theme using Twig templating and React components

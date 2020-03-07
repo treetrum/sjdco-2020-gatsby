@@ -11,13 +11,12 @@ module.exports = {
     },
     plugins: [
         `gatsby-plugin-react-helmet`,
-        {
-            resolve: `gatsby-source-filesystem`,
-            options: {
-                name: `images`,
-                path: `${__dirname}/src/images`
-            }
-        },
+        `gatsby-plugin-sharp`,
+        `gatsby-plugin-typescript`,
+        `gatsby-plugin-styled-components`,
+        `gatsby-plugin-sass`,
+        `gatsby-transformer-sharp`,
+        `gatsby-transformer-remark`,
         {
             resolve: `gatsby-source-filesystem`,
             options: {
@@ -32,9 +31,20 @@ module.exports = {
                 path: `${__dirname}/content/projects`
             }
         },
-        `gatsby-transformer-remark`,
-        `gatsby-transformer-sharp`,
-        `gatsby-plugin-sharp`,
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                name: `images`,
+                path: `${__dirname}/src/images`
+            }
+        },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                name: `images`,
+                path: `${__dirname}/static/images`
+            }
+        },
         {
             resolve: `gatsby-plugin-manifest`,
             options: {
@@ -47,9 +57,6 @@ module.exports = {
                 icon: favicon
             }
         },
-        `gatsby-plugin-typescript`,
-        `gatsby-plugin-netlify-cms`,
-        `gatsby-plugin-styled-components`,
-        `gatsby-plugin-sass`
+        `gatsby-plugin-netlify-cms`
     ]
 };

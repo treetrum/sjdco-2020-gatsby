@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import Image from "gatsby-image";
 
 const ThumbOuter = styled.div`
     position: relative;
@@ -21,12 +22,18 @@ const ThumbInner = styled.div<ThumbInnerProps>`
     a:hover & {
         transform: scale(1.1);
     }
+
+    .gatsby-image-wrapper {
+        position: static !important;
+    }
 `;
 
-const Thumbnail: React.FC<{ image: string }> = props => {
+const Thumbnail: React.FC<{ image: any }> = props => {
     return (
         <ThumbOuter>
-            <ThumbInner image={props.image}></ThumbInner>
+            <ThumbInner image={props.image}>
+                <Image fluid={props.image}></Image>
+            </ThumbInner>
         </ThumbOuter>
     );
 };

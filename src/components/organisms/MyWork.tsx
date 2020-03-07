@@ -9,7 +9,7 @@ interface Project {
         title: string;
         description: string;
         subtitle: string;
-        image: string;
+        image: any;
     };
     html: string;
 }
@@ -28,7 +28,13 @@ const MyWork: React.FC<{ projectNames: string[] }> = props => {
                                 title
                                 description
                                 subtitle
-                                image
+                                image {
+                                    childImageSharp {
+                                        fluid(maxWidth: 1024, quality: 100) {
+                                            ...GatsbyImageSharpFluid_withWebp
+                                        }
+                                    }
+                                }
                             }
                             html
                         }
@@ -68,7 +74,10 @@ const MyWork: React.FC<{ projectNames: string[] }> = props => {
                                 >
                                     <WorkTile
                                         title={project.frontmatter.title}
-                                        image={project.frontmatter.image}
+                                        image={
+                                            project.frontmatter.image
+                                                .childImageSharp.fluid
+                                        }
                                         subtitle={project.frontmatter.subtitle}
                                         onClick={() => {
                                             setActiveProject(project);
@@ -93,7 +102,7 @@ const MyWork: React.FC<{ projectNames: string[] }> = props => {
                 >
                     <ProjectSlideover
                         title={project.frontmatter.title}
-                        image={project.frontmatter.image}
+                        image={project.frontmatter.image.childImageSharp.fluid}
                         content={project.html}
                         onClose={() => {
                             setActiveProject(null);
