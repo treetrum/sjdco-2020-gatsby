@@ -78,7 +78,7 @@ const MyWork: React.FC<{ projectNames: string[] }> = props => {
     const setActiveProject = project => {
         if (project) {
             window.history.pushState(
-                {},
+                { project },
                 "",
                 `/project/${project.frontmatter.slug}`
             );
@@ -87,6 +87,20 @@ const MyWork: React.FC<{ projectNames: string[] }> = props => {
         }
         _setActiveProject(project);
     };
+
+    React.useEffect(() => {
+        const handle = ({ state }) => {
+            if (state && state.project) {
+                _setActiveProject(state.project);
+            } else {
+                _setActiveProject(null);
+            }
+        };
+        window.addEventListener("popstate", handle);
+        return () => {
+            window.removeEventListener("popstate", handle);
+        };
+    }, []);
 
     return (
         <>
