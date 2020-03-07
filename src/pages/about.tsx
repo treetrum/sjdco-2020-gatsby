@@ -1,7 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
-import Layout from "../components/layout";
 import HeroPage from "../components/organisms/HeroPage";
 import Form from "../components/organisms/Form";
 import SEO from "../components/seo";
@@ -29,7 +28,7 @@ const IndexPage: React.FC<{}> = () => {
     `);
     const page = data.file.childMarkdownRemark;
     return (
-        <Layout>
+        <>
             <HeroPage title={page.frontmatter.title} />
             <SEO title={page.frontmatter.title}></SEO>
             <div className="page-content">
@@ -51,7 +50,7 @@ const IndexPage: React.FC<{}> = () => {
                     </div>
                 </div>
             </div>
-        </Layout>
+        </>
     );
 };
 

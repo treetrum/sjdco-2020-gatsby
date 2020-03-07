@@ -1,30 +1,13 @@
 import * as React from "react";
 import { Link } from "gatsby";
-import NavLink, { LinkType } from "./atoms/NavLink";
+
+import Context from "./Context";
+import NavLinks from "./molecules/NavLinks";
 
 const logo = require("../images/logos/sd-logo.svg");
 
-const links: LinkType[] = [
-    {
-        title: "My Work",
-        url: "/",
-        type: "internal"
-    },
-    {
-        title: "About Me / Contact",
-        url: "/about",
-        type: "internal"
-    },
-    {
-        title: "Development Blog",
-        url: "https://mutableconstant.com",
-        target: "_blank",
-        type: "external"
-    }
-];
-
 const NavBar = () => {
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const { toggleMobileMenu, mobileMenuOpen } = React.useContext(Context);
     return (
         <header className="navbar">
             <div className="container">
@@ -35,21 +18,19 @@ const NavBar = () => {
                         </Link>
                     </div>
                     <nav className="navbar-item menu">
-                        {links.map(link => (
-                            <NavLink key={link.url} link={link}></NavLink>
-                        ))}
+                        <NavLinks />
                     </nav>
                     <div className="navbar-item hamburger">
                         <button
                             aria-label="Menu"
                             style={{ background: "none", border: 0 }}
                             type="button"
-                            className={`animated-hamburger ${
-                                isMenuOpen ? "active" : ""
-                            }`}
                             onClick={() => {
-                                setIsMenuOpen(a => !a);
+                                toggleMobileMenu();
                             }}
+                            className={`animated-hamburger ${
+                                mobileMenuOpen ? "active" : ""
+                            }`}
                         >
                             <span />
                             <span />

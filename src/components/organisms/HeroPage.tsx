@@ -4,7 +4,6 @@ import { lighten, darken } from "polished";
 
 import * as Colors from "../../constants/Colors";
 import Container from "../atoms/Container";
-
 import ParallaxIcons from "../molecules/ParallaxIcons";
 
 const Outer = styled.header`

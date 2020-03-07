@@ -57,6 +57,12 @@ module.exports = {
                 icon: favicon
             }
         },
-        `gatsby-plugin-netlify-cms`
+        `gatsby-plugin-netlify-cms`,
+        {
+            resolve: `gatsby-plugin-layout`,
+            options: {
+                component: require.resolve(`./src/components/layout.tsx`)
+            }
+        }
     ]
 };

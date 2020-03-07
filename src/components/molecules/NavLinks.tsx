@@ -1,19 +1,27 @@
 import * as React from "react";
-import { useSelector } from "react-redux";
 
-import MenuLink, { MenuLinkProps } from "../atoms/MenuLink";
+import NavLink, { LinkType } from "../atoms/NavLink";
 
 const NavLinks = () => {
-    const menuLinks: MenuLinkProps[] = useSelector(
-        (state: any) => state.options.menu_links
-    );
-    return (
-        <>
-            {menuLinks.map(({ link }, index: number) => (
-                <MenuLink key={index} link={link} />
-            ))}
-        </>
-    );
+    const links: LinkType[] = [
+        {
+            title: "My Work",
+            url: "/",
+            type: "internal"
+        },
+        {
+            title: "About Me / Contact",
+            url: "/about",
+            type: "internal"
+        },
+        {
+            title: "Development Blog",
+            url: "https://mutableconstant.com",
+            target: "_blank",
+            type: "external"
+        }
+    ];
+    return links.map(link => <NavLink key={link.url} link={link}></NavLink>);
 };
 
 export default NavLinks;

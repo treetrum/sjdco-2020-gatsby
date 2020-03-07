@@ -40,7 +40,7 @@
         background-color: $background;
     }
 
-    $speed: 400ms;
+    $speed: 333.333333333ms;
     $base_delay: $speed / 2;
 
     &.loading-enter {
