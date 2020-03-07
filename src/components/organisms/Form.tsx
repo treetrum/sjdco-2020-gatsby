@@ -71,10 +71,6 @@ const GravityForm: React.FC<PropsType> = props => {
     ) => {
         const form = formRef.current;
         if (form) {
-            const formData = new FormData(form);
-            for (const [key, value] of formData.entries()) {
-                console.log({ [key]: value });
-            }
             try {
                 const data = {
                     "form-name": form.getAttribute("name"),
@@ -82,6 +78,9 @@ const GravityForm: React.FC<PropsType> = props => {
                 };
                 await fetch("/", {
                     method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
                     body: encode(data)
                 });
                 setSubmitting(false);
