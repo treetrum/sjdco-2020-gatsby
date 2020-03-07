@@ -6,23 +6,21 @@ import isTouch from "../utils/isTouch";
  * is only calculated one, on desktop this is calculated on window.resize
  */
 export default () => {
-    const [height, setHeight] = useState<string | number>(
-        typeof window !== "undefined" ? window.innerHeight : "100vh"
+    const [height, setHeight] = useState<number | null>(
+        typeof window !== "undefined" ? window.innerHeight : null
     );
     useEffect(() => {
-        if (typeof window !== `undefined`) {
-            const handleWindowResize = () => {
-                setHeight(window.innerHeight);
-            };
-            if (!isTouch) {
-                window.addEventListener("resize", handleWindowResize);
-            }
-            return () => {
-                if (!isTouch) {
-                    window.removeEventListener("resize", handleWindowResize);
-                }
-            };
+        const handleWindowResize = () => {
+            setHeight(window.innerHeight);
+        };
+        if (!isTouch) {
+            window.addEventListener("resize", handleWindowResize);
         }
+        return () => {
+            if (!isTouch) {
+                window.removeEventListener("resize", handleWindowResize);
+            }
+        };
     }, []);
     return height;
 };

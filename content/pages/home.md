@@ -1,7 +1,7 @@
 ---
 title: Sam Davis
-cta.text: About Me
-cta.link: /contact
+cta_text: About Me
+cta_link: /about
 ---
-A passionate front-end developer\
-with over 6 years experience
+A passionate <span class="highlight-purple">front-end developer</span><br />
+with over <span class="highlight-blue">6 years experience</span>

@@ -1,8 +1,13 @@
+const title = `Sam Davis - Front End Developer`;
+const short_title = "sjdco-2020";
+const description = `Sam Davis - Sydney based frontend developer with over 6 years experience`;
+const favicon = "src/images/favicon.png";
+const theme_color = "#1d1e26";
+
 module.exports = {
     siteMetadata: {
-        title: `Gatsby Default Starter`,
-        description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-        author: `@gatsbyjs`
+        title: title,
+        description: description
     },
     plugins: [
         `gatsby-plugin-react-helmet`,
@@ -33,20 +38,18 @@ module.exports = {
         {
             resolve: `gatsby-plugin-manifest`,
             options: {
-                name: `gatsby-starter-default`,
-                short_name: `starter`,
+                name: title,
+                short_name: short_title,
                 start_url: `/`,
-                background_color: `#663399`,
-                theme_color: `#663399`,
-                display: `minimal-ui`
+                background_color: theme_color,
+                theme_color: theme_color,
+                display: `minimal-ui`,
+                icon: favicon
             }
         },
         `gatsby-plugin-typescript`,
         `gatsby-plugin-netlify-cms`,
         `gatsby-plugin-styled-components`,
         `gatsby-plugin-sass`
-        // this (optional) plugin enables Progressive Web App + Offline functionality
-        // To learn more, visit: https://gatsby.dev/offline
-        // `gatsby-plugin-offline`,
     ]
 };

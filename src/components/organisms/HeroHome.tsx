@@ -1,36 +1,54 @@
 import * as React from "react";
-import { Link } from "gatsby";
+import { Link, useStaticQuery, graphql } from "gatsby";
 
 import ParallaxIcons from "../molecules/ParallaxIcons";
 import ParallaxLetters from "../molecules/ParallaxLetters";
 import useWindowHeight from "../../hooks/useWindowHeight";
 
 const HeroHome = () => {
+    const data = useStaticQuery(graphql`
+        {
+            file(sourceInstanceName: { eq: "pages" }, name: { eq: "home" }) {
+                name
+                childMarkdownRemark {
+                    frontmatter {
+                        title
+                        cta_text
+                        cta_link
+                    }
+                    html
+                }
+            }
+        }
+    `);
+
+    const page = data.file.childMarkdownRemark;
+
     const minHeight = useWindowHeight();
+
     return (
         <header
             className="hero-home"
             style={{
-                minHeight:
-                    typeof minHeight === "string" ? minHeight : `${minHeight}px`
+                minHeight: minHeight ? `${minHeight}px` : `100vw`
             }}
         >
             <ParallaxIcons />
             <ParallaxLetters />
             <div className="container">
-                <h1 className="site-title">Sam Davis</h1>
-                <p className="subtitle">
-                    A passionate{" "}
-                    <span className="highlight-purple">
-                        front-end developer
-                    </span>{" "}
-                    <br />
-                    with over{" "}
-                    <span className="highlight-blue">6 years experience</span>
-                </p>
+                <h1 className="site-title">
+                    {data.file.childMarkdownRemark.frontmatter.title}
+                </h1>
+                <div
+                    className="subtitle"
+                    dangerouslySetInnerHTML={{ __html: page.html }}
+                />
                 <p className="buttons">
-                    <Link className="button-green" to="/contact">
-                        About Me
+                    <Link
+                        className="button-green"
+                        to={page.frontmatter.cta_link}
+                    >
+                        {page.frontmatter.cta_text}
                     </Link>
                 </p>
             </div>

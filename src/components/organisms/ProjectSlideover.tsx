@@ -11,18 +11,17 @@ interface Props {
 }
 
 const ProjectSlideover: React.FC<Props> = props => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-        if (event.key === "Escape") {
-            props.onClose();
-        }
-    };
-
     React.useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                props.onClose();
+            }
+        };
         window.addEventListener("keydown", handleKeyDown);
         return () => {
             window.removeEventListener("keydown", handleKeyDown);
         };
-    }, []);
+    }, [props]);
 
     return (
         <div className="project-slideover">

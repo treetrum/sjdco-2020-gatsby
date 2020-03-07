@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import Layout from "../components/layout";
 import HeroPage from "../components/organisms/HeroPage";
 import Form from "../components/organisms/Form";
+import SEO from "../components/seo";
 
 const IndexPage: React.FC<{}> = () => {
     const data = useStaticQuery(graphql`
@@ -30,6 +31,7 @@ const IndexPage: React.FC<{}> = () => {
     return (
         <Layout>
             <HeroPage title={page.frontmatter.title} />
+            <SEO title={page.frontmatter.title}></SEO>
             <div className="page-content">
                 <div className="container">
                     <div className="row">
