@@ -11,6 +11,7 @@ interface Project {
         subtitle: string;
         image: any;
         tags: string[];
+        slug: string;
     };
     html: string;
 }
@@ -25,6 +26,7 @@ const MyWork: React.FC<{ projectNames: string[] }> = props => {
                         name
                         childMarkdownRemark {
                             frontmatter {
+                                slug
                                 title
                                 description
                                 subtitle
@@ -57,11 +59,28 @@ const MyWork: React.FC<{ projectNames: string[] }> = props => {
         })
         .filter(a => !!a);
 
-    const [activeProject, setActiveProject] = React.useState<null | Project>(
-        null
+    const projectFromURL =
+        allProjects.find(
+            p =>
+                p.frontmatter.slug === window.location.pathname.split("/").pop()
+        ) || null;
+
+    const [activeProject, _setActiveProject] = React.useState<null | Project>(
+        projectFromURL
     );
 
-    console.log(projects);
+    const setActiveProject = project => {
+        if (project) {
+            window.history.pushState(
+                {},
+                "",
+                `/project/${project.frontmatter.slug}`
+            );
+        } else {
+            window.history.pushState({}, "", `/`);
+        }
+        _setActiveProject(project);
+    };
 
     return (
         <>
@@ -111,7 +130,9 @@ const MyWork: React.FC<{ projectNames: string[] }> = props => {
                         tags={project.frontmatter.tags}
                         content={project.html}
                         onClose={() => {
+                            // setActiveProject(null);
                             setActiveProject(null);
+                            // window.location.hash = `/project/${project.frontmatter.slug}`;
                         }}
                     />
                 </CSSTransition>

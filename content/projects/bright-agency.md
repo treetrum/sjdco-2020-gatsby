@@ -1,5 +1,6 @@
 ---
 title: Bright Agency Website
+slug: bright-agency-website
 subtitle: Custom WordPress Theme
 tags:
   - PHP

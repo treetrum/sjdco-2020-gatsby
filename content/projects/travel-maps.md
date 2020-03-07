@@ -1,5 +1,6 @@
 ---
 title: Sanofi Travel Maps
+slug: sanofi-travel-maps
 subtitle: 'Interactive, React-Powered Travel Map Improvements'
 tags:
   - React

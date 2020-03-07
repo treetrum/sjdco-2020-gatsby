@@ -1,5 +1,6 @@
 ---
 title: Wollondilly Anglican College
+slug: wollondilly-anglican-college
 subtitle: Custom WordPress Site
 tags:
   - Twig

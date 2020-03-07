@@ -1,5 +1,6 @@
 ---
 title: Cumberland Council Website
+slug: cumberland-council-website
 date: 2020-03-03T09:50:09.693Z
 description: Simple weather app for iOS
 subtitle: Custom Drupal Theme

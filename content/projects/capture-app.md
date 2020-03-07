@@ -1,5 +1,6 @@
 ---
 title: Sanofi Capture App
+slug: sanofi-capture-app
 description: Simple weather app for iOS
 subtitle: React Native iPhone/iPad App
 tags:

@@ -1,5 +1,6 @@
 ---
 title: Sweather iPhone App
+slug: sweather-iphone-app
 subtitle: A beautifully simple weather app for iOS
 tags:
   - Swift

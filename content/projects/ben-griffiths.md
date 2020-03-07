@@ -1,5 +1,6 @@
 ---
 title: Ben Griffiths Portfolio
+slug: ben-griffiths-portfolio
 subtitle: Custom WordPress Theme
 tags:
   - Twig

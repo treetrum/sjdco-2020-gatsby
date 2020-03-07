@@ -42,7 +42,7 @@ const Layout = ({ children }) => {
     return (
         <div className="page" ref={rootRef}>
             <SEO title=""></SEO>
-            {process.env.NODE_ENV && <SiteLoader active={loading} />}
+            <SiteLoader active={loading} />
             <NavBar />
             <MobileMenu />
             {children}

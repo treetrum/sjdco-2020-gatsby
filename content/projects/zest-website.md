@@ -1,5 +1,6 @@
 ---
 title: Zest Website
+slug: zest-website
 subtitle: Custom WordPress Site
 tags:
   - Twig
