@@ -14,7 +14,8 @@ interface Project {
     html: string;
 }
 
-const MyWork = () => {
+const MyWork: React.FC<{ projectNames: string[] }> = props => {
+    console.log(props);
     const data = useStaticQuery(graphql`
         {
             allFile(filter: { sourceInstanceName: { eq: "projects" } }) {
@@ -37,9 +38,15 @@ const MyWork = () => {
         }
     `);
 
-    const projects: Array<Project> = data.allFile.edges.map(
-        d => d.node.childMarkdownRemark
+    // Get all the projects from the query above
+    const allProjects: Array<Project> = data.allFile.edges.map(
+        ({ node }) => node.childMarkdownRemark
     );
+
+    // Filter and sort them from the names passed in to props
+    let projects: Project[] = props.projectNames.map(name => {
+        return allProjects.find(p => p.frontmatter.title === name);
+    });
 
     const [activeProject, setActiveProject] = React.useState<null | Project>(
         null

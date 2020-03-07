@@ -9,7 +9,7 @@ import SEO from "../components/seo";
 const IndexPage: React.FC<{}> = () => {
     const data = useStaticQuery(graphql`
         {
-            file(sourceInstanceName: { eq: "pages" }) {
+            file(sourceInstanceName: { eq: "pages" }, name: { eq: "about" }) {
                 name
                 childMarkdownRemark {
                     frontmatter {
