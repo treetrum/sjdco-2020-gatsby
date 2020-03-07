@@ -64,7 +64,10 @@ const MyWork: React.FC<{ projectNames: string[] }> = props => {
             ? allProjects.find(
                   p =>
                       p.frontmatter.slug ===
-                      window.location.pathname.split("/").pop()
+                      window.location.pathname
+                          .split("/")
+                          .filter(a => !!a)
+                          .pop()
               ) || null
             : null;
 
