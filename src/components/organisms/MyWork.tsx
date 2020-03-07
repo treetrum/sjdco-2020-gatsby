@@ -33,7 +33,7 @@ const MyWork: React.FC<{ projectNames: string[] }> = props => {
                                 tags
                                 image {
                                     childImageSharp {
-                                        fluid(maxWidth: 1024, quality: 100) {
+                                        fluid(maxWidth: 1024, quality: 75) {
                                             ...GatsbyImageSharpFluid_withWebp
                                         }
                                     }
