@@ -27,7 +27,6 @@ const IndexPage: React.FC<{}> = () => {
         }
     `);
     const page = data.file.childMarkdownRemark;
-    console.log(page);
     return (
         <Layout>
             <HeroPage title={page.frontmatter.title} />

@@ -9,6 +9,7 @@
     "@types/smooth-scroll": "^16.1.0",
     "@types/styled-components": "^5.0.1",
     "babel-plugin-styled-components": "^1.10.7",
+    "form-serialize": "^0.7.2",
     "formik": "^2.1.4",
     "gatsby": "^2.19.7",
     "gatsby-image": "^2.2.39",

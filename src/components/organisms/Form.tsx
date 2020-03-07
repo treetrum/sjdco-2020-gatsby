@@ -1,5 +1,4 @@
 import * as React from "react";
-import ReCAPTCHA from "react-google-recaptcha";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
 interface FormField {
@@ -32,6 +31,7 @@ const nameToId = (str: string) => {
 
 const GravityForm: React.FC<PropsType> = props => {
     const [submitted, setSubmitted] = React.useState(false);
+    const formRef = React.useRef<HTMLFormElement>(null);
 
     const fields: FormFieldWithId[] = props.fields.map(field => ({
         ...field,
@@ -57,8 +57,24 @@ const GravityForm: React.FC<PropsType> = props => {
         return errors;
     };
 
-    const handleSubmit = (v, a) => {
-        setSubmitted(true);
+    const handleSubmit = async (values, { setSubmitting }) => {
+        const form = formRef.current;
+        if (form) {
+            const formData = new FormData(form);
+            for (const [key, value] of formData.entries()) {
+                console.log({ [key]: value });
+            }
+            try {
+                await fetch(form.action, {
+                    method: "POST",
+                    body: formData
+                });
+                setSubmitting(false);
+            } catch (error) {
+                console.error(error);
+                setSubmitting(false);
+            }
+        }
     };
 
     // Default every field to empty string
@@ -75,12 +91,15 @@ const GravityForm: React.FC<PropsType> = props => {
             validate={handleValidate}
             onSubmit={handleSubmit}
         >
-            {({ isSubmitting }) => (
-                <Form
-                    style={{ opacity: isSubmitting ? 0.5 : null }}
-                    action="/form-submit"
+            {formProps => (
+                <form
+                    style={{ opacity: formProps.isSubmitting ? 0.5 : null }}
                     data-netlify="true"
                     name="contact"
+                    onReset={formProps.handleReset}
+                    onSubmit={formProps.handleSubmit}
+                    ref={formRef}
+                    action="/form-submit"
                 >
                     {fields.map(field => (
                         <div className="sfield" key={field.id}>
@@ -109,11 +128,11 @@ const GravityForm: React.FC<PropsType> = props => {
                     <button
                         className="button-green"
                         type="submit"
-                        disabled={isSubmitting}
+                        disabled={formProps.isSubmitting}
                     >
                         Submit
                     </button>
-                </Form>
+                </form>
             )}
         </Formik>
     );
