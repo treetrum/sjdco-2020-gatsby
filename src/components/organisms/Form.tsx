@@ -1,5 +1,7 @@
 import * as React from "react";
 import { Formik, Field, ErrorMessage, FormikHelpers } from "formik";
+import ReCAPTCHA from "react-google-recaptcha";
+import Config from "../../constants/Config";
 
 function encode(data: { [key: string]: string }) {
     return Object.keys(data)
@@ -40,6 +42,7 @@ const nameToId = (str: string) => {
 const GravityForm: React.FC<PropsType> = props => {
     const [submitted, setSubmitted] = React.useState(false);
     const formRef = React.useRef<HTMLFormElement>(null);
+    const recaptchaRef = React.useRef(null);
 
     const fields: FormFieldWithId[] = props.fields.map(field => ({
         ...field,
@@ -65,29 +68,45 @@ const GravityForm: React.FC<PropsType> = props => {
         return errors;
     };
 
-    const handleSubmit = async (
+    // Used to store reference to the form we're attempting to submit
+    let formStuff: {
+        values: any;
+        setSubmitting: (boolean) => void;
+    } = { values: {}, setSubmitting: () => {} };
+
+    const handleSubmit = (
         values: any,
         { setSubmitting }: FormikHelpers<any>
     ) => {
-        const form = formRef.current;
-        if (form) {
-            try {
-                const data = {
-                    "form-name": form.getAttribute("name"),
-                    ...values
-                };
-                await fetch("/", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/x-www-form-urlencoded"
-                    },
-                    body: encode(data)
-                });
-                setSubmitting(false);
-                setSubmitted(true);
-            } catch (error) {
-                console.error(error);
-                setSubmitting(false);
+        formStuff = { values, setSubmitting };
+        if (recaptchaRef.current) {
+            recaptchaRef.current.execute();
+        }
+    };
+
+    const onChange = async () => {
+        if (formStuff) {
+            const { values, setSubmitting } = formStuff;
+            const form = formRef.current;
+            if (form) {
+                try {
+                    const data = {
+                        "form-name": form.getAttribute("name"),
+                        ...values
+                    };
+                    await fetch("/", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded"
+                        },
+                        body: encode(data)
+                    });
+                    setSubmitting(false);
+                    setSubmitted(true);
+                } catch (error) {
+                    console.error(error);
+                    setSubmitting(false);
+                }
             }
         }
     };
@@ -110,12 +129,15 @@ const GravityForm: React.FC<PropsType> = props => {
                 <form
                     style={{ opacity: formProps.isSubmitting ? 0.5 : null }}
                     data-netlify="true"
+                    netlify-honeypot="bot-field"
+                    data-netlify-recaptcha="true"
                     name="contact"
                     onReset={formProps.handleReset}
                     onSubmit={formProps.handleSubmit}
                     ref={formRef}
                     action="/form-submit"
                 >
+                    <input type="text" name="bot-field" className="hidden" />
                     {fields.map(field => (
                         <div className="sfield" key={field.id}>
                             <label className="sfield__label" htmlFor={field.id}>
@@ -140,6 +162,12 @@ const GravityForm: React.FC<PropsType> = props => {
                             />
                         </div>
                     ))}
+                    <ReCAPTCHA
+                        ref={recaptchaRef}
+                        size="invisible"
+                        sitekey={Config.recaptcha.sitekey}
+                        onChange={onChange}
+                    />
                     <button
                         className="button-green"
                         type="submit"
