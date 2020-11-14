@@ -13,5 +13,4 @@ projects:
   - Bright Agency Website
   - Sweather iPhone App
 ---
-A passionate <span class="highlight-purple">front-end developer</span><br />
-with over <span class="highlight-blue">6 years experience</span>
+A passionate <span class="highlight-purple">web developer</span><br /> working out of <span class="highlight-blue">Sydney, Australia</span>
