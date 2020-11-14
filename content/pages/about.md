@@ -21,6 +21,6 @@ I have over 6 years of experience working as a web developer across a wide varie
 
 I currently work as a Software Engineer at [Atlassian](https://www.atlassian.com).
 
-During my free time I am either teaching myself new technologies, undertaking some kind of personal project or playing video games. My current personal project is a rewrite for version 2 of my simple weather iOS app – Sweather. Sweather 2 should be launching very soon!
+During my free time I am either teaching myself new technologies, undertaking some kind of personal project or playing video games. My current personal project is a rewrite for version 2 of my simple weather iOS app – Sweather. 
 
 If you’d like to get in touch with me regarding work (or you just want to say hello!), please fill out the form on this page and I’ll get back to you as soon as I can.
