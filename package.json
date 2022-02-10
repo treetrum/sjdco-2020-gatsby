@@ -28,7 +28,7 @@
     "minimist": "^1.2.5",
     "modernizr": "^3.9.1",
     "netlify-cms-app": "^2.11.26",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "parallax-js": "^3.1.0",
     "polished": "^3.4.4",
     "prop-types": "^15.7.2",
