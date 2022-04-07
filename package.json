@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "sjdco-2020-gatsby",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "",
+  "version": "1.0.0",
+  "author": "Sam Davis <sam@sjd.co>",
   "dependencies": {
     "@types/react-helmet": "^5.0.15",
     "@types/smooth-scroll": "^16.1.0",
@@ -28,7 +28,6 @@
     "minimist": "^1.2.5",
     "modernizr": "^3.9.1",
     "netlify-cms-app": "^2.11.26",
-    "node-sass": "^4.13.1",
     "parallax-js": "^3.1.0",
     "polished": "^3.4.4",
     "prop-types": "^15.7.2",
@@ -57,12 +56,5 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
